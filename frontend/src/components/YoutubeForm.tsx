@@ -9,10 +9,12 @@ export const YouTubeForm: React.FC<YouTubeFormProps> = ({ onClassify, setLoading
   const [url, setUrl] = useState("");
   const [localLoading, setLocalLoading] = useState(false);
 
+  const backendUrl = import.meta.env.VITE_API_URL;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!url){
-      alert("Please neter a URL")
+    if (!url) {
+      alert("Please enter a URL");
       return;
     }
 
@@ -21,7 +23,7 @@ export const YouTubeForm: React.FC<YouTubeFormProps> = ({ onClassify, setLoading
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/classify?youtube_url=${encodeURIComponent(url)}`,
+        `${backendUrl}/classify?youtube_url=${encodeURIComponent(url)}`,
         { method: "POST" }
       );
       const data = await response.json();
@@ -30,7 +32,7 @@ export const YouTubeForm: React.FC<YouTubeFormProps> = ({ onClassify, setLoading
       console.error("Error fetching:", error);
     } finally {
       setLocalLoading(false);
-      setLoading(false); 
+      setLoading(false);
     }
   };
 
