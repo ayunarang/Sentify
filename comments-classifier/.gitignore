@@ -1,0 +1,15 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# virtual environments
+env/
+venv/
+.venv/
+
+# environment files
+.env
+
+# csv
+comments_labelled.csv
+
