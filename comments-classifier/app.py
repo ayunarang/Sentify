@@ -5,6 +5,8 @@ import re
 import html
 from fastapi.middleware.cors import CORSMiddleware
 from youtube_comments import get_video_id, get_comments
+from fastapi.responses import JSONResponse
+
 
 app = FastAPI()
 app.add_middleware(
@@ -41,6 +43,11 @@ def clean_text(text):
     text = re.sub(r"\s+", " ", text).strip()
 
     return text
+
+
+@app.get("/")
+async def root():
+    return JSONResponse(content={"message": "OK"}, status_code=200)
 
 
 @app.post("/classify")
