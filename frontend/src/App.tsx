@@ -4,14 +4,27 @@ import { Chart } from "./components/Chart";
 import { CommentsList } from "./components/CommentsList";
 import { CategoryChart } from "./components/CategoryChart";
 
+type LabelCounts = Record<string, number>;
+type Summary = Record<string, string[]>;
+
+
+interface ClassificationResult {
+  label_counts: LabelCounts;
+  summary: Summary;
+}
+
 function App() {
-  const [result, setResult] = useState<any | null>(null);
+  const [result, setResult] = useState<ClassificationResult | null>(null);
   const [loading, setLoading] = useState(false);
+
+  const totalComments = result?.label_counts
+    ? Object.values(result.label_counts).reduce((acc, val) => acc + val, 0)
+    : 0;
 
   return (
     <div className="min-h-screen bg-gray-900 text-white transition-colors duration-300 w-full">
-      <main className="max-w-5xl mx-auto px-6 py-20 flex flex-col items-center">
-        <h1 className="text-3xl font-bold mb-6 text-center">
+      <main className="max-w-5xl mx-auto px-4 py-20 flex flex-col items-center">
+        <h1 className="text-3xl font-bold mb-6 text-center px-2">
           YouTube Comments Classifier
         </h1>
 
@@ -19,7 +32,7 @@ function App() {
 
         <section aria-live="polite">
           <div
-            className={`transition-opacity duration-700 ease-in-out ${
+            className={`px-2 transition-opacity duration-700 ease-in-out ${
               !result ? "opacity-100 mt-6" : "opacity-0 h-0 overflow-hidden"
             }`}
           >
@@ -60,7 +73,7 @@ function App() {
               result ? "opacity-100" : "opacity-0 h-0 overflow-hidden"
             }`}
           >
-            Analyzed Top 200 Comments from YouTube Video!
+            Analyzed Top {totalComments} Comments from YouTube Video!
           </h2>
         </section>
 

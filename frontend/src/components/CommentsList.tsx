@@ -9,7 +9,7 @@ export const CommentsList: React.FC<CommentsListProps> = ({ summary }) => {
   const [activeTab, setActiveTab] = useState(labels[0]);
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-4 bg-transparent">
+    <div className="w-full max-w-4xl mx-auto md:px-4 py-4 px-2 bg-transparent">
       <h1 className="text-xl font-semibold mb-6 text-white text-start md:text-center">
         Top 5 Comments in Each Category:
       </h1>
@@ -35,7 +35,7 @@ export const CommentsList: React.FC<CommentsListProps> = ({ summary }) => {
         ))}
       </div>
 
-      <div className="relative min-h-[500px] max-h-fit transition-all duration-500 ease-in-out overflow-auto">
+      <div className="relative min-h-[650px] md:min-h-[500px] max-h-fit transition-all duration-500 ease-in-out overflow-auto">
         {labels.map((label) => (
           <div
             key={label}
@@ -45,7 +45,7 @@ export const CommentsList: React.FC<CommentsListProps> = ({ summary }) => {
             className={`
               absolute inset-0 transition-opacity duration-500 ease-in-out
               ${activeTab === label ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
-              bg-gray-300 border border-gray-300 rounded-lg shadow p-6 overflow-y-auto
+              bg-gray-300 border border-gray-300 rounded-lg shadow p-6 overflow-y-auto custom-scrollbar
             `}
           >
             <h4 className="text-xl font-semibold mb-4 text-black text-start">
@@ -58,8 +58,8 @@ export const CommentsList: React.FC<CommentsListProps> = ({ summary }) => {
                   key={idx}
                   className="flex items-start gap-2 text-gray-800 text-base leading-relaxed"
                 >
-                  <span className="mt-1 text-blue-500">•</span>
-                  <p>{comment}</p>
+                  <span className=" mt-[0.5px] text-blue-500 h-1 w-1">•</span>
+                  <p className="text-sm">{comment}</p>
                 </li>
               ))}
 

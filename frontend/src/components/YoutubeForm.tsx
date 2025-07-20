@@ -40,7 +40,7 @@ export const YouTubeForm: React.FC<YouTubeFormProps> = ({ onClassify, setLoading
   };
 
   return (
-    <div className="w-full flex flex-col items-center">
+    <div className="w-full flex flex-col items-center px-2">
       <form
         onSubmit={handleSubmit}
         className="mb-8 flex flex-col md:flex-row gap-4 w-full max-w-lg"
