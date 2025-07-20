@@ -1,15 +1,15 @@
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 
 interface ChartProps {
-  summary: Record<string, string[]>;
+  label_counts: Record<string, number>;
 }
 
-export const Chart: React.FC<ChartProps> = ({ summary }) => {
+export const Chart: React.FC<ChartProps> = ({ label_counts }) => {
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#AF19FF", "#FF6666"];
 
-  const data = Object.entries(summary).map(([label, comments]) => ({
+  const data = Object.entries(label_counts).map(([label, count]) => ({
     name: label,
-    value: comments.length,
+    value: count,
   }));
 
   return (

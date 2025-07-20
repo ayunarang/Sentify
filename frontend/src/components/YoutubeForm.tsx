@@ -28,6 +28,9 @@ export const YouTubeForm: React.FC<YouTubeFormProps> = ({ onClassify, setLoading
       );
       const data = await response.json();
       onClassify(data);
+
+      console.log(data)
+
     } catch (error) {
       console.error("Error fetching:", error);
     } finally {
