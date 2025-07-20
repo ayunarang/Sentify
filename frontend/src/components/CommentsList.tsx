@@ -35,7 +35,7 @@ export const CommentsList: React.FC<CommentsListProps> = ({ summary }) => {
         ))}
       </div>
 
-      <div className="relative min-h-[650px] md:min-h-[500px] max-h-fit transition-all duration-500 ease-in-out overflow-auto">
+      <div className="relative min-h-[580px] max-h-fit transition-all duration-500 ease-in-out overflow-auto">
         {labels.map((label) => (
           <div
             key={label}
